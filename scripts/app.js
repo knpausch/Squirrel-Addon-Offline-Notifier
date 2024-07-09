@@ -1,6 +1,7 @@
 (() => {
     "use strict";
 
+    //TEST HELLOOOOOOO
     // listen to Squirrel lifecycle events
     Squirrel.addEventListener('eventDispatch', (e) => eval(`${e.detail.name}(e)`));
 
