@@ -41,7 +41,6 @@
 
         if (state != null) {
             processData(state.helloWorldData);
-            testPrint();
         }
     }
 

@@ -1,30 +1,38 @@
 body {
   display: flex;
   justify-content: center;
-  padding: 20px 0 20px 0; }
+  padding: 20px 0 20px 0;
+}
 
 .main-container {
   background: #FFFFFF;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
   width: 70%;
   height: 80vh;
-  padding: 10px; }
-  .main-container .svg-container {
+  padding: 10px;
+
+  .svg-container {
     width: 100%;
     height: 39px;
     display: flex;
-    justify-content: center; }
-  .main-container .hello-world-text {
+    justify-content: center;
+  }
+
+  .hello-world-text {
     margin-top: 10px;
     font-family: Open Sans;
     font-size: 24px;
-    color: #242729; }
-  .main-container .footer-text {
+    color: #242729;
+  }
+
+  .footer-text {
     font-size: 0.7em;
     color: #a5a5a5;
     position: absolute;
     bottom: 5px;
-    right: 5px; }
+    right: 5px;
+  }
+}
 
 .offline-ui,
 .offline-ui *,
@@ -34,7 +42,8 @@ body {
 .offline-ui *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .offline-ui {
   display: none;
@@ -44,116 +53,174 @@ body {
   margin: auto;
   top: 0;
   left: 0;
-  right: 0; }
+  right: 0;
+}
 
 .offline-ui .offline-ui-content:before {
-  display: inline; }
+  display: inline;
+}
 
 .offline-ui .offline-ui-retry {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  display: none; }
+  display: none;
+}
 
 .offline-ui .offline-ui-retry:before {
-  display: inline; }
+  display: inline;
+}
 
 .offline-ui.offline-ui-up.offline-ui-up-5s {
-  display: block; }
+  display: block;
+}
 
 .offline-ui.offline-ui-down {
-  display: block; }
+  display: block;
+}
 
 .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-retry {
-  display: block; }
+  display: block;
+}
 
 .offline-ui.offline-ui-down.offline-ui-reconnect-failed-2s.offline-ui-waiting .offline-ui-retry {
-  display: none; }
+  display: none;
+}
 
 @-webkit-keyframes offline-fadein {
   0% {
-    opacity: 0; }
+    opacity: 0;
+  }
+
   100% {
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 
 @-moz-keyframes offline-fadein {
   0% {
-    opacity: 0; }
+    opacity: 0;
+  }
+
   100% {
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 
 @-ms-keyframes offline-fadein {
   0% {
-    opacity: 0; }
+    opacity: 0;
+  }
+
   100% {
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 
 @-o-keyframes offline-fadein {
   0% {
-    opacity: 0; }
+    opacity: 0;
+  }
+
   100% {
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 
 @keyframes offline-fadein {
   0% {
-    opacity: 0; }
+    opacity: 0;
+  }
+
   100% {
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 
 @-webkit-keyframes offline-fadeout-and-hide {
   0% {
     opacity: 1;
-    display: block; }
+    display: block;
+  }
+
   99% {
     opacity: 0;
-    display: block; }
+    display: block;
+  }
+
   100% {
     opacity: 0;
-    display: none; } }
+    display: none;
+  }
+}
 
 @-moz-keyframes offline-fadeout-and-hide {
   0% {
     opacity: 1;
-    display: block; }
+    display: block;
+  }
+
   99% {
     opacity: 0;
-    display: block; }
+    display: block;
+  }
+
   100% {
     opacity: 0;
-    display: none; } }
+    display: none;
+  }
+}
 
 @-ms-keyframes offline-fadeout-and-hide {
   0% {
     opacity: 1;
-    display: block; }
+    display: block;
+  }
+
   99% {
     opacity: 0;
-    display: block; }
+    display: block;
+  }
+
   100% {
     opacity: 0;
-    display: none; } }
+    display: none;
+  }
+}
 
 @-o-keyframes offline-fadeout-and-hide {
   0% {
     opacity: 1;
-    display: block; }
+    display: block;
+  }
+
   99% {
     opacity: 0;
-    display: block; }
+    display: block;
+  }
+
   100% {
     opacity: 0;
-    display: none; } }
+    display: none;
+  }
+}
 
 @keyframes offline-fadeout-and-hide {
   0% {
     opacity: 1;
-    display: block; }
+    display: block;
+  }
+
   99% {
     opacity: 0;
-    display: block; }
+    display: block;
+  }
+
   100% {
     opacity: 0;
-    display: none; } }
+    display: none;
+  }
+}
 
 @-webkit-keyframes offline-rotation {
   0% {
@@ -161,13 +228,17 @@ body {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg); }
+    -o-transform: rotate(0deg);
+  }
+
   100% {
     transform: rotate(359deg);
     -webkit-transform: rotate(359deg);
     -moz-transform: rotate(359deg);
     -ms-transform: rotate(359deg);
-    -o-transform: rotate(359deg); } }
+    -o-transform: rotate(359deg);
+  }
+}
 
 @-moz-keyframes offline-rotation {
   0% {
@@ -175,13 +246,17 @@ body {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg); }
+    -o-transform: rotate(0deg);
+  }
+
   100% {
     transform: rotate(359deg);
     -webkit-transform: rotate(359deg);
     -moz-transform: rotate(359deg);
     -ms-transform: rotate(359deg);
-    -o-transform: rotate(359deg); } }
+    -o-transform: rotate(359deg);
+  }
+}
 
 @-ms-keyframes offline-rotation {
   0% {
@@ -189,13 +264,17 @@ body {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg); }
+    -o-transform: rotate(0deg);
+  }
+
   100% {
     transform: rotate(359deg);
     -webkit-transform: rotate(359deg);
     -moz-transform: rotate(359deg);
     -ms-transform: rotate(359deg);
-    -o-transform: rotate(359deg); } }
+    -o-transform: rotate(359deg);
+  }
+}
 
 @-o-keyframes offline-rotation {
   0% {
@@ -203,13 +282,17 @@ body {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg); }
+    -o-transform: rotate(0deg);
+  }
+
   100% {
     transform: rotate(359deg);
     -webkit-transform: rotate(359deg);
     -moz-transform: rotate(359deg);
     -ms-transform: rotate(359deg);
-    -o-transform: rotate(359deg); } }
+    -o-transform: rotate(359deg);
+  }
+}
 
 @keyframes offline-rotation {
   0% {
@@ -217,13 +300,17 @@ body {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg); }
+    -o-transform: rotate(0deg);
+  }
+
   100% {
     transform: rotate(359deg);
     -webkit-transform: rotate(359deg);
     -moz-transform: rotate(359deg);
     -ms-transform: rotate(359deg);
-    -o-transform: rotate(359deg); } }
+    -o-transform: rotate(359deg);
+  }
+}
 
 .offline-ui {
   -webkit-border-radius: 4px;
@@ -236,7 +323,8 @@ body {
   top: 1em;
   width: 38em;
   max-width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 @media (max-width: 38em) {
   .offline-ui {
@@ -245,10 +333,13 @@ body {
     -ms-border-radius: 0;
     -o-border-radius: 0;
     border-radius: 0;
-    top: 0; } }
+    top: 0;
+  }
+}
 
 .offline-ui .offline-ui-content:before {
-  line-height: 1.25em; }
+  line-height: 1.25em;
+}
 
 .offline-ui .offline-ui-retry {
   position: absolute;
@@ -261,7 +352,8 @@ body {
   line-height: 3.5em;
   height: 3.5em;
   margin: auto;
-  padding: 0 1em; }
+  padding: 0 1em;
+}
 
 .offline-ui.offline-ui-up {
   -webkit-animation: offline-fadeout-and-hide forwards 0.5s 2s;
@@ -271,110 +363,127 @@ body {
   animation: offline-fadeout-and-hide forwards 0.5s 2s;
   -webkit-backface-visibility: hidden;
   background: #d6e9c6;
-  color: #468847; }
+  color: #468847;
+}
+
+// --------------------------------------------ENGLISH
 
 /* line 6, ../sass/_content.sass */
 .offline-ui .offline-ui-retry:before {
-  content: "Reconnect"; }
-
+  content: "Reconnect";
+}
 /* line 11, ../sass/_content.sass */
 .offline-ui.offline-ui-up .offline-ui-content:before {
-  content: "Your computer is connected to the internet."; }
-
+  content: "Your computer is connected to the internet.";
+}
 @media (max-width: 1024px) {
   /* line 11, ../sass/_content.sass */
   .offline-ui.offline-ui-up .offline-ui-content:before {
-    content: "Your device is connected to the internet."; } }
-
+    content: "Your device is connected to the internet.";
+  }
+}
 @media (max-width: 568px) {
   /* line 11, ../sass/_content.sass */
   .offline-ui.offline-ui-up .offline-ui-content:before {
-    content: "Your device is connected."; } }
-
+    content: "Your device is connected.";
+  }
+}
 /* line 22, ../sass/_content.sass */
 .offline-ui.offline-ui-down .offline-ui-content:before {
-  content: "Your computer lost its internet connection."; }
-
+  content: "Your computer lost its internet connection.";
+}
 @media (max-width: 1024px) {
   /* line 22, ../sass/_content.sass */
   .offline-ui.offline-ui-down .offline-ui-content:before {
-    content: "Your device lost its internet connection."; } }
-
+    content: "Your device lost its internet connection.";
+  }
+}
 @media (max-width: 568px) {
   /* line 22, ../sass/_content.sass */
   .offline-ui.offline-ui-down .offline-ui-content:before {
-    content: "Your device isn't connected."; } }
-
+    content: "Your device isn't connected.";
+  }
+}
 /* line 33, ../sass/_content.sass */
 .offline-ui.offline-ui-down.offline-ui-connecting .offline-ui-content:before, .offline-ui.offline-ui-down.offline-ui-connecting-2s .offline-ui-content:before {
-  content: "Attempting to reconnect..."; }
-
+  content: "Attempting to reconnect...";
+}
 /* line 42, ../sass/_content.sass */
 .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="second"]:before {
-  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " seconds..."; }
-
+  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " seconds...";
+}
 @media (max-width: 568px) {
   /* line 42, ../sass/_content.sass */
   .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="second"]:before {
-    content: "Reconnecting in " attr(data-retry-in-value) "s..."; } }
-
+    content: "Reconnecting in " attr(data-retry-in-value) "s...";
+  }
+}
 /* line 50, ../sass/_content.sass */
 .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="second"][data-retry-in-value="1"]:before {
-  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " second..."; }
-
+  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " second...";
+}
 @media (max-width: 568px) {
   /* line 50, ../sass/_content.sass */
   .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="second"][data-retry-in-value="1"]:before {
-    content: "Reconnecting in " attr(data-retry-in-value) "s..."; } }
-
+    content: "Reconnecting in " attr(data-retry-in-value) "s...";
+  }
+}
 /* line 58, ../sass/_content.sass */
 .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="minute"]:before {
-  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " minutes..."; }
-
+  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " minutes...";
+}
 @media (max-width: 568px) {
   /* line 58, ../sass/_content.sass */
   .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="minute"]:before {
-    content: "Reconnecting in " attr(data-retry-in-value) "m..."; } }
-
+    content: "Reconnecting in " attr(data-retry-in-value) "m...";
+  }
+}
 /* line 66, ../sass/_content.sass */
 .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="minute"][data-retry-in-value="1"]:before {
-  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " minute..."; }
-
+  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " minute...";
+}
 @media (max-width: 568px) {
   /* line 66, ../sass/_content.sass */
   .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="minute"][data-retry-in-value="1"]:before {
-    content: "Reconnecting in " attr(data-retry-in-value) "m..."; } }
-
+    content: "Reconnecting in " attr(data-retry-in-value) "m...";
+  }
+}
 /* line 74, ../sass/_content.sass */
 .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="hour"]:before {
-  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " hours..."; }
-
+  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " hours...";
+}
 @media (max-width: 568px) {
   /* line 74, ../sass/_content.sass */
   .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="hour"]:before {
-    content: "Reconnecting in " attr(data-retry-in-value) "h..."; } }
-
+    content: "Reconnecting in " attr(data-retry-in-value) "h...";
+  }
+}
 /* line 82, ../sass/_content.sass */
 .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="hour"][data-retry-in-value="1"]:before {
-  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " hour..."; }
-
+  content: "Connection lost. Reconnecting in " attr(data-retry-in-value) " hour...";
+}
 @media (max-width: 568px) {
   /* line 82, ../sass/_content.sass */
   .offline-ui.offline-ui-down.offline-ui-waiting .offline-ui-content[data-retry-in-unit="hour"][data-retry-in-value="1"]:before {
-    content: "Reconnecting in " attr(data-retry-in-value) "h..."; } }
-
+    content: "Reconnecting in " attr(data-retry-in-value) "h...";
+  }
+}
 /* line 90, ../sass/_content.sass */
 .offline-ui.offline-ui-down.offline-ui-reconnect-failed-2s.offline-ui-waiting .offline-ui-retry {
-  display: none; }
-
+  display: none;
+}
 /* line 93, ../sass/_content.sass */
 .offline-ui.offline-ui-down.offline-ui-reconnect-failed-2s .offline-ui-content:before {
-  content: "Connection attempt failed."; }
+  content: "Connection attempt failed.";
+}
+
+// ----------------------------------------------ENGLISH INDICATOR
 
 /* line 5, ../sass/offline-language-english-indicator.sass */
 .offline-ui.offline-ui-up .offline-ui-content:before {
-  content: "Online"; }
-
+  content: "Online";
+}
 /* line 10, ../sass/offline-language-english-indicator.sass */
 .offline-ui.offline-ui-down .offline-ui-content:before {
-  content: "Offline"; }
+  content: "Offline";
+}
