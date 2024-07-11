@@ -70,12 +70,13 @@
         const position = e.detail.position;
     }
 
-    var connStatus = document.getElementById("connection_status");
-	window.addEventListener('online', function(e) {
-		connStatus.className = 'offline-ui offline-ui-up offline-ui-up-2s offline-ui-up-5s';
-	}, false);
-	window.addEventListener('offline', function(e) {
-		connStatus.className = 'offline-ui offline-ui-down offline-ui-waiting';
-	}, false);
+    //WORKS WHEN ETHERNET UNPLUGS/REPLUGS
+    // var connStatus = document.getElementById("connection_status");
+	// window.addEventListener('online', function(e) {
+	// 	connStatus.className = 'offline-ui offline-ui-up offline-ui-up-2s offline-ui-up-5s';
+	// }, false);
+	// window.addEventListener('offline', function(e) {
+	// 	connStatus.className = 'offline-ui offline-ui-down offline-ui-waiting';
+	// }, false);
 
 })();
