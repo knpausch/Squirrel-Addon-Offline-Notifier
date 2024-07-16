@@ -1,12 +1,30 @@
 body {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
+  background-color: rgb(238, 162, 236);
 }
+
 #status {
   font-size: 1.5em;
   text-align: center;
+}
+
+#message-container {
+  display: flex;
+  width: 40vw;
+  justify-content: center;
+  justify-content:space-between;
+  border-radius: 5px;
+}
+
+.message-container-up {
+  background-color: rgb(33, 163, 57);
+}
+
+.message-container-down {
+  background-color: rgb(183, 49, 49);
 }
