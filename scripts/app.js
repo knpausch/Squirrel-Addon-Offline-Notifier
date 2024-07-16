@@ -44,7 +44,6 @@
     }
 
     /**
-     * Test
      * Called at the end of a series of property value changes.  This can be called
      * either when a single or multiple values change at once.  This is the flag to say
      * There are no more incoming value changs to process at this time.
