@@ -44,6 +44,7 @@
     }
 
     /**
+     * Test
      * Called at the end of a series of property value changes.  This can be called
      * either when a single or multiple values change at once.  This is the flag to say
      * There are no more incoming value changs to process at this time.
@@ -69,14 +70,4 @@
     function onSetPosition(e) {
         const position = e.detail.position;
     }
-
-    //WORKS WHEN ETHERNET UNPLUGS/REPLUGS
-    // var connStatus = document.getElementById("connection_status");
-	// window.addEventListener('online', function(e) {
-	// 	connStatus.className = 'offline-ui offline-ui-up offline-ui-up-2s offline-ui-up-5s';
-	// }, false);
-	// window.addEventListener('offline', function(e) {
-	// 	connStatus.className = 'offline-ui offline-ui-down offline-ui-waiting';
-	// }, false);
-
 })();
