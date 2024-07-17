@@ -2,6 +2,10 @@
     "use strict";
     
     var themeSelected;
+    let status = 'Offline';
+    const button = document.getElementById('reconnect-button');
+    const messageContainer = document.getElementById('message-container');
+    const indicator = document.getElementById('server-indicator');
 
     Squirrel.addEventListener('eventDispatch', (e) => eval(`${e.detail.name}(e)`));
 
@@ -32,65 +36,24 @@
         render();
     }
 
-    function onPropertyChangesComplete() { }
-
-    function onSetCanvas(e) {
-        const canvas = e.detail.canvas;
-    }
-
-    function onSetRuntimeMode(e) {
-        const mode = e.detail.mode;
-    }
-
-    function onSetSize(e) {
-        const size = e.detail.size;
-        
-    }
-
-    function onSetPosition(e) {
-        const position = e.detail.position;
-    }
-
-
-    let status = 'Offline';
-    const button = document.getElementById('reconnect-button');
-    const messageContainer = document.getElementById('message-container');
-    const indicator = document.getElementById('server-indicator');
-    
     function render() {
         document.getElementById('status').innerText = status;
         var downClassName = 'message-container-down-'+ themeSelected;
         var upClassName = 'message-container-up-'+ themeSelected;
-        // console.log("Here boss: ", upClassName)
-        console.log("Look boss: ", themeSelected)
-
     
         if (status === 'Offline') {
             button.style.display = 'block';  // To show the button
-            // messageContainer.className = 'message-container-down-default'
-            // messageContainer.className = 'message-container-down-day'
-            // messageContainer.classname = downClassName;
-
-            // messageContainer.classname = 'message-container-down-default';
-            // messageContainer.className = 'message-container-down-default'
             messageContainer.className = downClassName;
 
             indicator.className = 'server-indicator-down'
         }
         else {
             button.style.display = 'none';  // To hide the button
-            // messageContainer.className = 'message-container-up-default'
-            // messageContainer.className = 'message-container-up-day'
-
-            // messageContainer.classname = upClassName;
-            // messageContainer.className = 'message-container-up-default'
-
             messageContainer.className = upClassName;
-            // messageContainer.className = upClassName;
             indicator.className = 'server-indicator-up'
         }
     }
-    
+
     function checkConnection() {
         fetch('https://jsonplaceholder.typicode.com/posts/1')  // Example endpoint
             .then(response => {
@@ -146,5 +109,23 @@
         console.log("Checking network connection")
         checkConnection();
     })
+
+    function onPropertyChangesComplete() { }
+
+    function onSetCanvas(e) {
+        const canvas = e.detail.canvas;
+    }
+
+    function onSetRuntimeMode(e) {
+        const mode = e.detail.mode;
+    }
+
+    function onSetSize(e) {
+        const size = e.detail.size;
+    }
+
+    function onSetPosition(e) {
+        const position = e.detail.position;
+    }
 
 })();
