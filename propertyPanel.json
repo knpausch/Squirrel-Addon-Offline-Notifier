@@ -7,24 +7,30 @@
         },
         "children": [
             {
-                "type": "InputBox",
+                "type": "Dropdown",
                 "properties": {
-                    "labelName": "Hello world text:",
-                    "allowBinding": true,
-                    "allowManualEntry": true,
-                    "textArea": true,
-                    "bindingPropertyName": "helloWorldData"
+                    "labelName": "Style",
+                    "options": [
+                        {
+                            "option": "default",
+                            "text": "Default"
+                        },
+                        {
+                            "option": "day",
+                            "text": "Day"
+                        },
+                        {
+                            "option": "night",
+                            "text": "Night"
+                        },
+                        {
+                            "option": "micro",
+                            "text": "Micro"
+                        }
+                    ],
+                    "bindingPropertyName": "themeType"
                 }
-            },
-            {
-                "type": "InputBox",
-                "properties": {
-                    "labelName": "Hello world response:",
-                    "allowBinding": true,
-                    "allowManualEntry": false,
-                    "bindingPropertyName": "helloWorldResponse"
-                }
-            }          
+            }
         ]
     }
 ]

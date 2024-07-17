@@ -1,10 +1,6 @@
 [
     {
-        "property": "helloWorldData",
+        "property": "themeType",
         "direction": "receive"
-    },
-    {
-        "property": "helloWorldResponse",
-        "direction": "send"
     }
 ]
