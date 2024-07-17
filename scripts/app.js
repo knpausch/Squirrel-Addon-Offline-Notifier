@@ -1,11 +1,13 @@
 (() => {
     "use strict";
     
-    var themeSelected;
+    let themeSelected;
     let status = 'Offline';
     const button = document.getElementById('reconnect-button');
     const messageContainer = document.getElementById('message-container');
     const indicator = document.getElementById('server-indicator');
+    const statusText = document.getElementById('status-text');
+
 
     Squirrel.addEventListener('eventDispatch', (e) => eval(`${e.detail.name}(e)`));
 
@@ -16,7 +18,6 @@
         
         if (state != null) {
             themeSelected = state.themeType
-            console.log("HIIII:" ,state)
         }
         render();
     }
@@ -37,14 +38,13 @@
     }
 
     function render() {
-        document.getElementById('status').innerText = status;
-        var downClassName = 'message-container-down-'+ themeSelected;
-        var upClassName = 'message-container-up-'+ themeSelected;
+        statusText.innerText = status;
+        let downClassName = 'message-container-down-'+ themeSelected;
+        let upClassName = 'message-container-up-'+ themeSelected;
     
         if (status === 'Offline') {
             button.style.display = 'block';  // To show the button
             messageContainer.className = downClassName;
-
             indicator.className = 'server-indicator-down'
         }
         else {
@@ -127,5 +127,4 @@
     function onSetPosition(e) {
         const position = e.detail.position;
     }
-
 })();

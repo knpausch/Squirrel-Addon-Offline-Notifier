@@ -26,6 +26,10 @@
                         {
                             "option": "micro",
                             "text": "Micro"
+                        },
+                        {
+                            "option": "custom",
+                            "text": "Custom"
                         }
                     ],
                     "bindingPropertyName": "themeType"

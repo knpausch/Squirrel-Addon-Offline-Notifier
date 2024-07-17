@@ -11,14 +11,14 @@ body {
   height: 100vh;
 }
 
-#status {
+#status-text {
   font-size: 5vh;
   margin-left: 15px;
   text-align: center;
 }
 
 #reconnect-button {
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: #e4e3e3;
   border-style: none;
   color: #6d6d6d;
@@ -82,5 +82,18 @@ body {
 .message-container-down-day {
   background-color: #f6f6f6;
   color: #515151;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Night theme */
+.message-container-up-night {
+  background-color: #000000;
+  color: #bdbdbd;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.message-container-down-night {
+  background-color: #000000;
+  color: #bdbdbd;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
