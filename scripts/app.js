@@ -40,6 +40,9 @@
 
         if (state != null) {
             processData(state.helloWorldData);
+
+            //TESTING!!!
+            // processSize();
         }
     }
 
@@ -48,7 +51,10 @@
      * either when a single or multiple values change at once.  This is the flag to say
      * There are no more incoming value changs to process at this time.
      */
-    function onPropertyChangesComplete() { }
+    function onPropertyChangesComplete() { 
+        //TESTING!!!
+        // processSize();
+    }
 
     // Called when a setCanvas event is received from Squirrel
     function onSetCanvas(e) {
@@ -63,10 +69,22 @@
     // Called when a setSize event is received from Squirrel
     function onSetSize(e) {
         const size = e.detail.size;
+        
     }
 
     // Called when a setPosition event is received from Squirrel
     function onSetPosition(e) {
         const position = e.detail.position;
+
+
+        //TESTING!!!
+        // if(Squirrel.getSize().width != messageContainer.offsetWidth || Squirrel.getSize().height != messageContainer.offsetHeight){
+        //     processSize()
+        //   }
     }
+
+    //TESTING!!!
+    // function processSize() {
+    //     Squirrel.setSize(messageContainer.offsetWidth, messageContainer.offsetHeight)
+    //   }
 })();
