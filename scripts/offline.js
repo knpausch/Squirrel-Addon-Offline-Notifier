@@ -9,12 +9,14 @@ function updateStatus(message) {
 
     if (status === 'Offline') {
         button.style.display = 'block';  // To show the button
-        messageContainer.className = 'message-container-down'
+        // messageContainer.className = 'message-container-down-default'
+        messageContainer.className = 'message-container-down-day'
         indicator.className = 'server-indicator-down'
     }
     else {
         button.style.display = 'none';  // To hide the button
-        messageContainer.className = 'message-container-up'
+        // messageContainer.className = 'message-container-up-default'
+        messageContainer.className = 'message-container-up-day'
         indicator.className = 'server-indicator-up'
     }
 }
