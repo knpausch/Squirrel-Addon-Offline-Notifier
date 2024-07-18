@@ -24,10 +24,6 @@
                             "text": "Night"
                         },
                         {
-                            "option": "compact",
-                            "text": "Compact"
-                        },
-                        {
                             "option": "custom",
                             "text": "Custom"
                         }

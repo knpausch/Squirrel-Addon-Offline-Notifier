@@ -1,7 +1,9 @@
 (() => {
     "use strict";
-    
+
     let themeSelected;
+    let customUpColor;
+    let customDownColor;
     let status = 'Offline';
     const button = document.getElementById('reconnect-button');
     const messageContainer = document.getElementById('message-container');
@@ -15,7 +17,9 @@
 
     function onInitState(e) {
         const state = e.detail.state
-        
+        customUpColor = state.serverUpColor.color[0].color;
+        customDownColor = state.serverDownColor.color[0].color;
+
         if (state != null) {
             themeSelected = state.themeType
         }
@@ -30,6 +34,14 @@
             case 'themeType':
                 themeSelected = propertyValue;
                 break;
+            case 'serverUpColor.color.*.color':
+                customUpColor = propertyValue;
+                render();
+                break;
+            case 'serverDownColor.color.*.color':
+                customDownColor = propertyValue;
+                render();
+                break;
             default:
                 console.log("Unknown message type: " + propertyName);
                 break;
@@ -39,19 +51,32 @@
 
     function render() {
         statusText.innerText = status;
-        let downClassName = 'message-container-down-'+ themeSelected;
-        let upClassName = 'message-container-up-'+ themeSelected;
-    
-        if (status === 'Offline') {
-            button.style.display = 'block';  // To show the button
+        let downClassName = 'message-container-down-' + themeSelected;
+        let upClassName = 'message-container-up-' + themeSelected;
+
+        if (status === 'Offline' && themeSelected != 'custom') {
+            button.style.display = 'block';
             messageContainer.className = downClassName;
             indicator.className = 'server-indicator-down'
         }
-        else {
-            button.style.display = 'none';  // To hide the button
+        else if (status === 'Online' && themeSelected != 'custom') {
+            button.style.display = 'none';
             messageContainer.className = upClassName;
             indicator.className = 'server-indicator-up'
         }
+        else if (status === 'Offline' && themeSelected === 'custom') {
+            button.style.display = 'block';
+            messageContainer.className = downClassName;
+            messageContainer.style.backgroundColor = customDownColor;
+            indicator.className = 'server-indicator-down'
+        }
+        else {
+            button.style.display = 'none';
+            messageContainer.className = upClassName;
+            messageContainer.style.backgroundColor = customUpColor;
+            indicator.className = 'server-indicator-up'
+        }
+
     }
 
     function checkConnection() {
@@ -73,23 +98,23 @@
                 // render('You are offline (polling).');
             });
     }
-    
+
     // Polling interval (e.g., every 5 seconds)
     setInterval(checkConnection, 5000);
-    
+
     // Listen for native online/offline events in Browser
     window.addEventListener('Offline', function () {
         status = 'Offline';
         render();
         // render('You are currently offline (native).');
     });
-    
+
     window.addEventListener('Online', function () {
         status = 'Online';
         render();
         // render('You are back online (native).');
     });
-    
+
     // Initial check upon page load
     if (!navigator.onLine) {
         status = 'Offline';
@@ -100,10 +125,10 @@
         render();
         // render('You are online (initial check).');
     }
-    
+
     // Initial polling check
     checkConnection();
-    
+
     // Button checks network connection
     button.addEventListener('click', function () {
         console.log("Checking network connection")

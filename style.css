@@ -9,6 +9,9 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  
+  --custom-background-up: #d6e9c6;
+  --custom-background-down: #ec8888;
 }
 
 #status-text {
@@ -98,4 +101,16 @@ body {
   background-color: #000000;
   color: #bdbdbd;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Custom theme */
+.message-container-up-custom {
+  color: #bdbdbd;
+  box-shadow: none;
+}
+
+.message-container-down-custom {
+  background-color: var(--custom-background-down);
+  color: #bdbdbd;
+  box-shadow: none;
 }
