@@ -1,3 +1,27 @@
 {
-    "themeType": "default"
+    "themeType": "default",
+    "serverUpColor": {
+        "type": "solid",
+        "color": [
+            {
+                "color": "#1591ea",
+                "alpha": 1,
+                "ratio": 0
+            }
+        ],
+        "rotation": 0,
+        "enabled": true
+    },
+    "serverDownColor": {
+        "type": "solid",
+        "color": [
+            {
+                "color": "#eaa015",
+                "alpha": 1,
+                "ratio": 0
+            }
+        ],
+        "rotation": 0,
+        "enabled": true
+    }
 }

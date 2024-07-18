@@ -24,8 +24,8 @@
                             "text": "Night"
                         },
                         {
-                            "option": "micro",
-                            "text": "Micro"
+                            "option": "compact",
+                            "text": "Compact"
                         },
                         {
                             "option": "custom",
@@ -34,6 +34,33 @@
                     ],
                     "bindingPropertyName": "themeType"
                 }
+            },
+            {
+                "type": "ConditionalBlock",
+                "properties": {
+                    "bindingPropertyName": "themeType",
+                    "equals": "custom"
+                },
+                "children": [
+                    {
+                        "type": "ColorOpacityInput",
+                        "properties": {
+                            "labelName": "Server Online Color",
+                            "bindingPropertyName": "serverUpColor",
+                            "allowCheckbox": false,
+                            "hasOpacity": true
+                        }
+                    },
+                    {
+                        "type": "ColorOpacityInput",
+                        "properties": {
+                            "labelName": "Server Offline Color",
+                            "bindingPropertyName": "serverDownColor",
+                            "allowCheckbox": false,
+                            "hasOpacity": true
+                        }
+                    }
+                ]
             }
         ]
     }

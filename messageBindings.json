@@ -2,5 +2,13 @@
     {
         "property": "themeType",
         "direction": "receive"
+    },
+    {
+        "property": "serverUpColor",
+        "direction": "receive"
+    },
+    {
+        "property": "serverDownColor",
+        "direction": "receive"
     }
 ]
