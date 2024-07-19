@@ -5,6 +5,7 @@
     let customUpColor;
     let customDownColor;
     let customTextColor;
+    let customTextOpacity;
     let customBorderRadius;
     let status = 'Offline';
     const button = document.getElementById('reconnect-button');
@@ -22,6 +23,7 @@
         customDownColor = state.serverDownColor.color[0].color;
         customTextColor = state.textColor.color[0].color;
         customBorderRadius = state.borderRadius + "px";
+        customTextOpacity = state.textColor.color[0].alpha;
 
         if (state != null) {
             themeSelected = state.themeType
@@ -39,6 +41,9 @@
                 break;
             case 'textColor.color.*.color':
                 customTextColor = propertyValue;
+                break;
+            case 'textColor.color.*.alpha':
+                customTextOpacity = propertyValue;
                 break;
             case 'serverUpColor.color.*.color':
                 customUpColor = propertyValue;
@@ -65,20 +70,21 @@
             messageContainer.className = downClassName;
             indicator.className = 'server-indicator-down'
             messageContainer.style.borderRadius = "5px";
-
+            statusText.style.opacity = 1;
         }
         else if (status === 'Online' && themeSelected != 'custom') {
             button.style.display = 'none';
             messageContainer.className = upClassName;
             indicator.className = 'server-indicator-up'
             messageContainer.style.borderRadius = "5px";
-
+            statusText.style.opacity = 1;
         }
         else if (status === 'Offline' && themeSelected === 'custom') {
             button.style.display = 'block';
             messageContainer.className = downClassName;
             messageContainer.style.setProperty('--custom-background-down', customDownColor);
             messageContainer.style.setProperty('--custom-text-color', customTextColor);
+            statusText.style.opacity = customTextOpacity;
             indicator.className = 'server-indicator-down'
             messageContainer.style.borderRadius = customBorderRadius;
             button.style.borderRadius = customBorderRadius;
@@ -88,6 +94,7 @@
             messageContainer.className = upClassName;
             messageContainer.style.setProperty('--custom-background-up', customUpColor);
             messageContainer.style.setProperty('--custom-text-color', customTextColor);
+            statusText.style.opacity = customTextOpacity;
             indicator.className = 'server-indicator-up'
             messageContainer.style.borderRadius = customBorderRadius;
             button.style.borderRadius = customBorderRadius;
@@ -95,50 +102,44 @@
     }
 
     function checkConnection() {
-        fetch('https://jsonplaceholder.typicode.com/posts/1')  // Example endpoint
+        fetch('https://jsonplaceholder.typicode.com/posts/1')
             .then(response => {
                 if (response.ok) {
                     status = 'Online';
                     render();
-                    // render('You are online (polling).');
                 } else {
                     status = 'Offline';
                     render();
-                    // render('You are offline (polling).');
                 }
             })
             .catch(error => {
                 status = 'Offline';
                 render();
-                // render('You are offline (polling).');
             });
     }
 
     // Polling interval (e.g., every 5 seconds)
     setInterval(checkConnection, 5000);
 
-    // Listen for native online/offline events in Browser
+    // Listen for native offline events in Browser
     window.addEventListener('Offline', function () {
         status = 'Offline';
         render();
-        // render('You are currently offline (native).');
     });
 
+    // Listen for native online events in Browser
     window.addEventListener('Online', function () {
         status = 'Online';
         render();
-        // render('You are back online (native).');
     });
 
     // Initial check upon page load
     if (!navigator.onLine) {
         status = 'Offline';
         render();
-        // render('You are currently offline (initial check).');
     } else {
         status = 'Online'
         render();
-        // render('You are online (initial check).');
     }
 
     // Initial polling check

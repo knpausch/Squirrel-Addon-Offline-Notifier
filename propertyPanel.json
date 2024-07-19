@@ -44,7 +44,7 @@
                             "labelName": "Font Color",
                             "bindingPropertyName": "textColor",
                             "allowCheckbox": false,
-                            "hasOpacity": false
+                            "hasOpacity": true
                         }
                     },
                     {
