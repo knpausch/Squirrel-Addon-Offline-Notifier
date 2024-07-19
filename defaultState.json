@@ -1,5 +1,17 @@
 {
     "themeType": "default",
+    "textColor": {
+        "type": "solid",
+        "color": [
+            {
+                "color": "#000000",
+                "alpha": 1,
+                "ratio": 0
+            }
+        ],
+        "rotation": 0,
+        "enabled": true
+    },
     "serverUpColor": {
         "type": "solid",
         "color": [

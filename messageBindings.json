@@ -4,6 +4,10 @@
         "direction": "receive"
     },
     {
+        "property": "textColor",
+        "direction": "receive"
+    },
+    {
         "property": "serverUpColor",
         "direction": "receive"
     },

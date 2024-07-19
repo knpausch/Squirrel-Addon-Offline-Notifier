@@ -4,6 +4,7 @@
     let themeSelected;
     let customUpColor;
     let customDownColor;
+    let customTextColor;
     let status = 'Offline';
     const button = document.getElementById('reconnect-button');
     const messageContainer = document.getElementById('message-container');
@@ -19,6 +20,7 @@
         const state = e.detail.state
         customUpColor = state.serverUpColor.color[0].color;
         customDownColor = state.serverDownColor.color[0].color;
+        customTextColor = state.textColor.color[0].color;
         console.log("1 TIME!")
 
         if (state != null) {
@@ -34,6 +36,9 @@
         switch (Squirrel.getGenericProperty(propertyName)) {
             case 'themeType':
                 themeSelected = propertyValue;
+                break;
+            case 'textColor.color.*.color':
+                customTextColor = propertyValue;
                 break;
             case 'serverUpColor.color.*.color':
                 customUpColor = propertyValue;
@@ -69,15 +74,15 @@
             button.style.display = 'block';
             messageContainer.className = downClassName;
             messageContainer.style.setProperty('--custom-background-down', customDownColor);
+            messageContainer.style.setProperty('--custom-text-color', customTextColor);
             indicator.className = 'server-indicator-down'
         }
-        else if (status === 'Online' && themeSelected === 'custom'){
+        else if (status === 'Online' && themeSelected === 'custom') {
             button.style.display = 'none';
             messageContainer.className = upClassName;
             messageContainer.style.setProperty('--custom-background-up', customUpColor);
-
+            messageContainer.style.setProperty('--custom-text-color', customTextColor);
             indicator.className = 'server-indicator-up'
-            console.log("is this trueeeee???")
         }
         console.log("CLASSNAME: ", messageContainer.className)
         console.log("STATUS: ", status)

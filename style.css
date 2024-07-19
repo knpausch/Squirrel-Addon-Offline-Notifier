@@ -12,6 +12,7 @@ body {
   
   --custom-background-up: #d6e9c6;
   --custom-background-down: #ec8888;
+  --custom-text-color: #000000;
 }
 
 #status-text {
@@ -106,12 +107,12 @@ body {
 /* Custom theme */
 .message-container-up-custom {
   background-color: var(--custom-background-up);
-  color: #bdbdbd;
+  color: var(--custom-text-color);
   box-shadow: none;
 }
 
 .message-container-down-custom {
   background-color: var(--custom-background-down);
-  color: #bdbdbd;
+  color: var(--custom-text-color);
   box-shadow: none;
 }

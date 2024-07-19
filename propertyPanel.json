@@ -37,23 +37,32 @@
                     "bindingPropertyName": "themeType",
                     "equals": "custom"
                 },
-                "children": [    
+                "children": [
                     {
                         "type": "ColorOpacityInput",
                         "properties": {
-                            "labelName": "Server Online Color",
-                            "bindingPropertyName": "serverUpColor",
+                            "labelName": "Font Color",
+                            "bindingPropertyName": "textColor",
                             "allowCheckbox": false,
-                            "hasOpacity": true
+                            "hasOpacity": false
                         }
                     },
                     {
                         "type": "ColorOpacityInput",
                         "properties": {
-                            "labelName": "Server Offline Color",
+                            "labelName": "Online Color",
+                            "bindingPropertyName": "serverUpColor",
+                            "allowCheckbox": false,
+                            "hasOpacity": false
+                        }
+                    },
+                    {
+                        "type": "ColorOpacityInput",
+                        "properties": {
+                            "labelName": "Offline Color",
                             "bindingPropertyName": "serverDownColor",
                             "allowCheckbox": false,
-                            "hasOpacity": true
+                            "hasOpacity": false
                         }
                     }
                 ]
