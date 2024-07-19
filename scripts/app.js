@@ -5,6 +5,7 @@
     let customUpColor;
     let customUpOpacity;
     let customDownColor;
+    let customDownOpacity;
     let customTextColor;
     let customTextOpacity;
     let customBorderRadius;
@@ -20,12 +21,13 @@
 
     function onInitState(e) {
         const state = e.detail.state
+        customTextColor = state.textColor.color[0].color;
+        customTextOpacity = state.textColor.color[0].alpha;
         customUpColor = state.serverUpColor.color[0].color;
         customUpOpacity = state.serverUpColor.color[0].alpha;
         customDownColor = state.serverDownColor.color[0].color;
-        customTextColor = state.textColor.color[0].color;
+        customDownOpacity = state.serverDownColor.color[0].alpha;
         customBorderRadius = state.borderRadius + "px";
-        customTextOpacity = state.textColor.color[0].alpha;
 
         if (state != null) {
             themeSelected = state.themeType
@@ -56,6 +58,9 @@
             case 'serverDownColor.color.*.color':
                 customDownColor = propertyValue;
                 break;
+            case 'serverDownColor.color.*.alpha':
+                customDownOpacity = propertyValue;
+                break;
             case 'borderRadius':
                 customBorderRadius = propertyValue + "px";
                 break;
@@ -70,11 +75,13 @@
         statusText.innerText = status;
         let downClassName = 'message-container-down-' + themeSelected;
         let upClassName = 'message-container-up-' + themeSelected;
+
         if (status === 'Offline' && themeSelected != 'custom') {
             button.style.display = 'block';
             messageContainer.className = downClassName;
             indicator.className = 'server-indicator-down'
             messageContainer.style.borderRadius = "5px";
+            messageContainer.style.opacity = 1;
             statusText.style.opacity = 1;
         }
         else if (status === 'Online' && themeSelected != 'custom') {
@@ -89,6 +96,7 @@
             button.style.display = 'block';
             messageContainer.className = downClassName;
             messageContainer.style.setProperty('--custom-background-down', customDownColor);
+            messageContainer.style.opacity = customDownOpacity;
             messageContainer.style.setProperty('--custom-text-color', customTextColor);
             statusText.style.opacity = customTextOpacity;
             indicator.className = 'server-indicator-down'

@@ -62,7 +62,7 @@
                             "labelName": "Offline Color",
                             "bindingPropertyName": "serverDownColor",
                             "allowCheckbox": false,
-                            "hasOpacity": false
+                            "hasOpacity": true
                         }
                     },
                     {
