@@ -37,7 +37,7 @@
                     "bindingPropertyName": "themeType",
                     "equals": "custom"
                 },
-                "children": [
+                "children": [    
                     {
                         "type": "ColorOpacityInput",
                         "properties": {

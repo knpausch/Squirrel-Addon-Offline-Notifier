@@ -19,6 +19,7 @@
         const state = e.detail.state
         customUpColor = state.serverUpColor.color[0].color;
         customDownColor = state.serverDownColor.color[0].color;
+        console.log("1 TIME!")
 
         if (state != null) {
             themeSelected = state.themeType
@@ -36,11 +37,9 @@
                 break;
             case 'serverUpColor.color.*.color':
                 customUpColor = propertyValue;
-                render();
                 break;
             case 'serverDownColor.color.*.color':
                 customDownColor = propertyValue;
-                render();
                 break;
             default:
                 console.log("Unknown message type: " + propertyName);
@@ -53,6 +52,8 @@
         statusText.innerText = status;
         let downClassName = 'message-container-down-' + themeSelected;
         let upClassName = 'message-container-up-' + themeSelected;
+
+        console.log("THEME: ", themeSelected)
 
         if (status === 'Offline' && themeSelected != 'custom') {
             button.style.display = 'block';
@@ -67,15 +68,19 @@
         else if (status === 'Offline' && themeSelected === 'custom') {
             button.style.display = 'block';
             messageContainer.className = downClassName;
-            messageContainer.style.backgroundColor = customDownColor;
+            messageContainer.style.setProperty('--custom-background-down', customDownColor);
             indicator.className = 'server-indicator-down'
         }
-        else {
+        else if (status === 'Online' && themeSelected === 'custom'){
             button.style.display = 'none';
             messageContainer.className = upClassName;
-            messageContainer.style.backgroundColor = customUpColor;
+            messageContainer.style.setProperty('--custom-background-up', customUpColor);
+
             indicator.className = 'server-indicator-up'
+            console.log("is this trueeeee???")
         }
+        console.log("CLASSNAME: ", messageContainer.className)
+        console.log("STATUS: ", status)
 
     }
 

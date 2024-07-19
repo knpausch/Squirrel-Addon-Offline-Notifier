@@ -105,6 +105,7 @@ body {
 
 /* Custom theme */
 .message-container-up-custom {
+  background-color: var(--custom-background-up);
   color: #bdbdbd;
   box-shadow: none;
 }
