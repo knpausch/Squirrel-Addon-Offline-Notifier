@@ -92,8 +92,8 @@
         button.style.display = 'block';
         button.style.opacity = 1;
         messageContainer.className = `message-container-down-${selectedTheme}`;
-        messageContainer.style.setProperty('--custom-background-down', selectedDownColor);
-        messageContainer.style.opacity = selectedDownOpacity;
+        let rgba = hexToRgb(selectedDownColor) + `, ${selectedDownOpacity})`
+        messageContainer.style.setProperty('--custom-background-down', rgba);
         messageContainer.style.setProperty('--custom-text-color', selectedTextColor);
         statusText.style.opacity = selectedTextOpacity;
         indicator.className = 'server-indicator-down';
@@ -105,13 +105,23 @@
         button.style.display = 'none';
         button.style.opacity = 1;
         messageContainer.className = `message-container-up-${selectedTheme}`;
-        messageContainer.style.setProperty('--custom-background-up', selectedUpColor);
-        messageContainer.style.opacity = selectedUpOpacity;
+        let rgba = hexToRgb(selectedUpColor) + `, ${selectedUpOpacity})`
+        messageContainer.style.setProperty('--custom-background-up', rgba);
         messageContainer.style.setProperty('--custom-text-color', selectedTextColor);
         statusText.style.opacity = selectedTextOpacity;
         indicator.className = 'server-indicator-up';
         messageContainer.style.borderRadius = selectedBorderRadius;
         button.style.borderRadius = selectedBorderRadius;
+    }
+
+    function hexToRgb(hex) {
+        hex = hex.replace(/^#/, '');
+
+        let r = parseInt(hex.substring(0, 2), 16);
+        let g = parseInt(hex.substring(2, 4), 16);
+        let b = parseInt(hex.substring(4, 6), 16);
+
+        return `rgba(${r}, ${g}, ${b}`;
     }
 
     function render() {
@@ -167,12 +177,12 @@
         checkConnection();
         setInterval(checkConnection, 5000);
     }
-    
+
     function onPropertyChangesComplete() { }
     function onSetCanvas(e) { }
     function onSetRuntimeMode(e) { }
     function onSetSize(e) { }
     function onSetPosition(e) { }
-    
+
     initialize();
 })();
