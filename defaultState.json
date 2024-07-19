@@ -35,5 +35,6 @@
         ],
         "rotation": 0,
         "enabled": true
-    }
+    },
+    "borderRadius": 5
 }

@@ -5,12 +5,12 @@
     let customUpColor;
     let customDownColor;
     let customTextColor;
+    let customBorderRadius;
     let status = 'Offline';
     const button = document.getElementById('reconnect-button');
     const messageContainer = document.getElementById('message-container');
     const indicator = document.getElementById('server-indicator');
     const statusText = document.getElementById('status-text');
-
 
     Squirrel.addEventListener('eventDispatch', (e) => eval(`${e.detail.name}(e)`));
 
@@ -21,7 +21,7 @@
         customUpColor = state.serverUpColor.color[0].color;
         customDownColor = state.serverDownColor.color[0].color;
         customTextColor = state.textColor.color[0].color;
-        console.log("1 TIME!")
+        customBorderRadius = state.borderRadius + "px";
 
         if (state != null) {
             themeSelected = state.themeType
@@ -46,6 +46,9 @@
             case 'serverDownColor.color.*.color':
                 customDownColor = propertyValue;
                 break;
+            case 'borderRadius':
+                customBorderRadius = propertyValue + "px";
+                break;
             default:
                 console.log("Unknown message type: " + propertyName);
                 break;
@@ -57,18 +60,19 @@
         statusText.innerText = status;
         let downClassName = 'message-container-down-' + themeSelected;
         let upClassName = 'message-container-up-' + themeSelected;
-
-        console.log("THEME: ", themeSelected)
-
         if (status === 'Offline' && themeSelected != 'custom') {
             button.style.display = 'block';
             messageContainer.className = downClassName;
             indicator.className = 'server-indicator-down'
+            messageContainer.style.borderRadius = "5px";
+
         }
         else if (status === 'Online' && themeSelected != 'custom') {
             button.style.display = 'none';
             messageContainer.className = upClassName;
             indicator.className = 'server-indicator-up'
+            messageContainer.style.borderRadius = "5px";
+
         }
         else if (status === 'Offline' && themeSelected === 'custom') {
             button.style.display = 'block';
@@ -76,6 +80,8 @@
             messageContainer.style.setProperty('--custom-background-down', customDownColor);
             messageContainer.style.setProperty('--custom-text-color', customTextColor);
             indicator.className = 'server-indicator-down'
+            messageContainer.style.borderRadius = customBorderRadius;
+            button.style.borderRadius = customBorderRadius;
         }
         else if (status === 'Online' && themeSelected === 'custom') {
             button.style.display = 'none';
@@ -83,10 +89,9 @@
             messageContainer.style.setProperty('--custom-background-up', customUpColor);
             messageContainer.style.setProperty('--custom-text-color', customTextColor);
             indicator.className = 'server-indicator-up'
+            messageContainer.style.borderRadius = customBorderRadius;
+            button.style.borderRadius = customBorderRadius;
         }
-        console.log("CLASSNAME: ", messageContainer.className)
-        console.log("STATUS: ", status)
-
     }
 
     function checkConnection() {

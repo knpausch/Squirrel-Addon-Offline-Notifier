@@ -14,5 +14,9 @@
     {
         "property": "serverDownColor",
         "direction": "receive"
+    },
+    {
+        "property": "borderRadius",
+        "direction": "receive"
     }
 ]

@@ -64,6 +64,27 @@
                             "allowCheckbox": false,
                             "hasOpacity": false
                         }
+                    },
+                    {
+                        "type": "InputBox",
+                        "properties": {
+                            "labelName": "Border Radius",
+                            "shortPropertyName": "px",
+                            "disabled": false,
+                            "type": "Integer",
+                            "min": 0,
+                            "max": 100,
+                            "step": 1,
+                            "allowBinding": true,
+                            "allowCounter": true,
+                            "allowManualEntry": true,
+                            "spellcheck": false,
+                            "placeholder": "",
+                            "textArea": false,
+                            "textAreaRows": 1,
+                            "liveUpdate": true,
+                            "bindingPropertyName": "borderRadius"
+                        }
                     }
                 ]
             }
