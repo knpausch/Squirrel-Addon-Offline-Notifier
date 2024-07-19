@@ -1,68 +1,67 @@
 (() => {
     "use strict";
 
-    let themeSelected;
-    let customUpColor;
-    let customUpOpacity;
-    let customDownColor;
-    let customDownOpacity;
-    let customTextColor;
-    let customTextOpacity;
-    let customBorderRadius;
-    let status = 'Offline';
-    const button = document.getElementById('reconnect-button');
+    let selectedTheme;
+    let selectedUpColor;
+    let selectedUpOpacity;
+    let selectedDownColor;
+    let selectedDownOpacity;
+    let selectedTextColor;
+    let selectedTextOpacity;
+    let selectedBorderRadius;
+    let networkStatus;
+
     const messageContainer = document.getElementById('message-container');
-    const indicator = document.getElementById('server-indicator');
     const statusText = document.getElementById('status-text');
+    const indicator = document.getElementById('server-indicator');
+    const button = document.getElementById('reconnect-button');
 
     Squirrel.addEventListener('eventDispatch', (e) => eval(`${e.detail.name}(e)`));
-
     Squirrel.initWithSquirrel();
 
     function onInitState(e) {
-        const state = e.detail.state
-        customTextColor = state.textColor.color[0].color;
-        customTextOpacity = state.textColor.color[0].alpha;
-        customUpColor = state.serverUpColor.color[0].color;
-        customUpOpacity = state.serverUpColor.color[0].alpha;
-        customDownColor = state.serverDownColor.color[0].color;
-        customDownOpacity = state.serverDownColor.color[0].alpha;
-        customBorderRadius = state.borderRadius + "px";
-
-        if (state != null) {
-            themeSelected = state.themeType
+        const state = e.detail.state;
+        if (state) {
+            selectedTheme = state.themeType;
+            selectedTextColor = state.textColor.color[0].color;
+            selectedTextOpacity = state.textColor.color[0].alpha;
+            selectedUpColor = state.serverUpColor.color[0].color;
+            selectedUpOpacity = state.serverUpColor.color[0].alpha;
+            selectedDownColor = state.serverDownColor.color[0].color;
+            selectedDownOpacity = state.serverDownColor.color[0].alpha;
+            selectedBorderRadius = state.borderRadius + 'px';
         }
         render();
     }
 
     function onPropertyChange(e) {
-        const propertyName = e.detail.property
-        const propertyValue = e.detail.value
+        const propertyName = e.detail.property;
+        const propertyValue = e.detail.value;
 
         switch (Squirrel.getGenericProperty(propertyName)) {
             case 'themeType':
-                themeSelected = propertyValue;
+                selectedTheme = propertyValue;
                 break;
             case 'textColor.color.*.color':
-                customTextColor = propertyValue;
+                selectedTextColor = propertyValue;
                 break;
             case 'textColor.color.*.alpha':
-                customTextOpacity = propertyValue;
+                selectedTextOpacity = propertyValue;
                 break;
             case 'serverUpColor.color.*.color':
-                customUpColor = propertyValue;
+                selectedUpColor = propertyValue;
                 break;
             case 'serverUpColor.color.*.alpha':
-                customUpOpacity = propertyValue;
+                selectedUpOpacity = propertyValue;
                 break;
             case 'serverDownColor.color.*.color':
-                customDownColor = propertyValue;
+                selectedDownColor = propertyValue;
                 break;
             case 'serverDownColor.color.*.alpha':
-                customDownOpacity = propertyValue;
+                selectedDownOpacity = propertyValue;
                 break;
             case 'borderRadius':
-                customBorderRadius = propertyValue + "px";
+                selectedBorderRadius = propertyValue + 'px';
                 break;
             default:
                 console.log("Unknown message type: " + propertyName);
@@ -71,116 +70,109 @@
         render();
     }
 
-    function render() {
-        statusText.innerText = status;
-        let downClassName = 'message-container-down-' + themeSelected;
-        let upClassName = 'message-container-up-' + themeSelected;
+    function applyOfflineStyles(theme) {
+        button.style.display = 'block';
+        messageContainer.className = `message-container-down-${theme}`;
+        indicator.className = 'server-indicator-down';
+        messageContainer.style.borderRadius = "5px";
+        messageContainer.style.opacity = 1;
+        statusText.style.opacity = 1;
+    }
 
-        if (status === 'Offline' && themeSelected != 'custom') {
-            button.style.display = 'block';
-            messageContainer.className = downClassName;
-            indicator.className = 'server-indicator-down'
-            messageContainer.style.borderRadius = "5px";
-            messageContainer.style.opacity = 1;
-            statusText.style.opacity = 1;
-        }
-        else if (status === 'Online' && themeSelected != 'custom') {
-            button.style.display = 'none';
-            messageContainer.className = upClassName;
-            indicator.className = 'server-indicator-up'
-            messageContainer.style.borderRadius = "5px";
-            messageContainer.style.opacity = 1;
-            statusText.style.opacity = 1;
-        }
-        else if (status === 'Offline' && themeSelected === 'custom') {
-            button.style.display = 'block';
-            messageContainer.className = downClassName;
-            messageContainer.style.setProperty('--custom-background-down', customDownColor);
-            messageContainer.style.opacity = customDownOpacity;
-            messageContainer.style.setProperty('--custom-text-color', customTextColor);
-            statusText.style.opacity = customTextOpacity;
-            indicator.className = 'server-indicator-down'
-            messageContainer.style.borderRadius = customBorderRadius;
-            button.style.borderRadius = customBorderRadius;
-        }
-        else if (status === 'Online' && themeSelected === 'custom') {
-            button.style.display = 'none';
-            messageContainer.className = upClassName;
-            messageContainer.style.setProperty('--custom-background-up', customUpColor);
-            messageContainer.style.opacity = customUpOpacity;
-            messageContainer.style.setProperty('--custom-text-color', customTextColor);
-            statusText.style.opacity = customTextOpacity;
-            indicator.className = 'server-indicator-up'
-            messageContainer.style.borderRadius = customBorderRadius;
-            button.style.borderRadius = customBorderRadius;
+    function applyOnlineStyles(theme) {
+        button.style.display = 'none';
+        messageContainer.className = `message-container-up-${theme}`;
+        indicator.className = 'server-indicator-up';
+        messageContainer.style.borderRadius = "5px";
+        messageContainer.style.opacity = 1;
+        statusText.style.opacity = 1;
+    }
+
+    function applyCustomOfflineStyles() {
+        button.style.display = 'block';
+        button.style.opacity = 1;
+        messageContainer.className = `message-container-down-${selectedTheme}`;
+        messageContainer.style.setProperty('--custom-background-down', selectedDownColor);
+        messageContainer.style.opacity = selectedDownOpacity;
+        messageContainer.style.setProperty('--custom-text-color', selectedTextColor);
+        statusText.style.opacity = selectedTextOpacity;
+        indicator.className = 'server-indicator-down';
+        messageContainer.style.borderRadius = selectedBorderRadius;
+        button.style.borderRadius = selectedBorderRadius;
+    }
+
+    function applyCustomOnlineStyles() {
+        button.style.display = 'none';
+        button.style.opacity = 1;
+        messageContainer.className = `message-container-up-${selectedTheme}`;
+        messageContainer.style.setProperty('--custom-background-up', selectedUpColor);
+        messageContainer.style.opacity = selectedUpOpacity;
+        messageContainer.style.setProperty('--custom-text-color', selectedTextColor);
+        statusText.style.opacity = selectedTextOpacity;
+        indicator.className = 'server-indicator-up';
+        messageContainer.style.borderRadius = selectedBorderRadius;
+        button.style.borderRadius = selectedBorderRadius;
+    }
+
+    function render() {
+        statusText.innerText = networkStatus;
+
+        if (networkStatus === 'Offline') {
+            selectedTheme === 'custom' ? applyCustomOfflineStyles() : applyOfflineStyles(selectedTheme);
+        } else if (networkStatus === 'Online') {
+            selectedTheme === 'custom' ? applyCustomOnlineStyles() : applyOnlineStyles(selectedTheme);
         }
     }
 
+    //Checks network connection (hardware)
     function checkConnection() {
         fetch('https://jsonplaceholder.typicode.com/posts/1')
             .then(response => {
-                if (response.ok) {
-                    status = 'Online';
-                    render();
-                } else {
-                    status = 'Offline';
-                    render();
-                }
+                networkStatus = response.ok ? 'Online' : 'Offline';
+                render();
             })
-            .catch(error => {
-                status = 'Offline';
+            .catch(() => {
+                networkStatus = 'Offline';
                 render();
             });
     }
 
-    // Polling interval (e.g., every 5 seconds)
-    setInterval(checkConnection, 5000);
+    //Checks network connection (browser)
+    function initializeNetworkListeners() {
+        window.addEventListener('offline', () => {
+            networkStatus = 'Offline';
+            render();
+        });
 
-    // Listen for native offline events in Browser
-    window.addEventListener('Offline', function () {
-        status = 'Offline';
-        render();
-    });
+        window.addEventListener('online', () => {
+            networkStatus = 'Online';
+            render();
+        });
 
-    // Listen for native online events in Browser
-    window.addEventListener('Online', function () {
-        status = 'Online';
-        render();
-    });
-
-    // Initial check upon page load
-    if (!navigator.onLine) {
-        status = 'Offline';
-        render();
-    } else {
-        status = 'Online'
-        render();
+        button.addEventListener('click', () => {
+            checkConnection();
+            console.log("Checking network connection...");
+        });
     }
 
-    // Initial polling check
-    checkConnection();
-
-    // Button checks network connection
-    button.addEventListener('click', function () {
-        console.log("Checking network connection")
+    //Checks initial network connection and polling every 5 seconds
+    function initialize() {
+        initializeNetworkListeners();
+        if (!navigator.onLine) {
+            networkStatus = 'Offline';
+        } else {
+            networkStatus = 'Online';
+        }
+        render();
         checkConnection();
-    })
-
+        setInterval(checkConnection, 5000);
+    }
+    
     function onPropertyChangesComplete() { }
-
-    function onSetCanvas(e) {
-        const canvas = e.detail.canvas;
-    }
-
-    function onSetRuntimeMode(e) {
-        const mode = e.detail.mode;
-    }
-
-    function onSetSize(e) {
-        const size = e.detail.size;
-    }
-
-    function onSetPosition(e) {
-        const position = e.detail.position;
-    }
+    function onSetCanvas(e) { }
+    function onSetRuntimeMode(e) { }
+    function onSetSize(e) { }
+    function onSetPosition(e) { }
+    
+    initialize();
 })();

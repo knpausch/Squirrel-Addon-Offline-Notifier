@@ -9,7 +9,7 @@
             {
                 "type": "Dropdown",
                 "properties": {
-                    "labelName": "Style",
+                    "labelName": "Theme",
                     "options": [
                         {
                             "option": "default",
