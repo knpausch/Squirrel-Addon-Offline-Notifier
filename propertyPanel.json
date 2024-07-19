@@ -53,7 +53,7 @@
                             "labelName": "Online Color",
                             "bindingPropertyName": "serverUpColor",
                             "allowCheckbox": false,
-                            "hasOpacity": false
+                            "hasOpacity": true
                         }
                     },
                     {

@@ -3,6 +3,7 @@
 
     let themeSelected;
     let customUpColor;
+    let customUpOpacity;
     let customDownColor;
     let customTextColor;
     let customTextOpacity;
@@ -20,6 +21,7 @@
     function onInitState(e) {
         const state = e.detail.state
         customUpColor = state.serverUpColor.color[0].color;
+        customUpOpacity = state.serverUpColor.color[0].alpha;
         customDownColor = state.serverDownColor.color[0].color;
         customTextColor = state.textColor.color[0].color;
         customBorderRadius = state.borderRadius + "px";
@@ -47,6 +49,9 @@
                 break;
             case 'serverUpColor.color.*.color':
                 customUpColor = propertyValue;
+                break;
+            case 'serverUpColor.color.*.alpha':
+                customUpOpacity = propertyValue;
                 break;
             case 'serverDownColor.color.*.color':
                 customDownColor = propertyValue;
@@ -77,6 +82,7 @@
             messageContainer.className = upClassName;
             indicator.className = 'server-indicator-up'
             messageContainer.style.borderRadius = "5px";
+            messageContainer.style.opacity = 1;
             statusText.style.opacity = 1;
         }
         else if (status === 'Offline' && themeSelected === 'custom') {
@@ -93,6 +99,7 @@
             button.style.display = 'none';
             messageContainer.className = upClassName;
             messageContainer.style.setProperty('--custom-background-up', customUpColor);
+            messageContainer.style.opacity = customUpOpacity;
             messageContainer.style.setProperty('--custom-text-color', customTextColor);
             statusText.style.opacity = customTextOpacity;
             indicator.className = 'server-indicator-up'
